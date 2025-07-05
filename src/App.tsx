@@ -15,13 +15,15 @@ function App() {
       <AuthProvider>
         <div className="min-h-screen bg-gray-50">
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/trip/:id" element={<TripSpace />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/trip/:id" element={<TripSpace />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </main>
         </div>
       </AuthProvider>
     </BrowserRouter>
