@@ -35,7 +35,7 @@ const Login = () => {
         const errorMessage = error.message.toLowerCase();
         
         if (errorMessage.includes('user already registered') || errorMessage.includes('user_already_exists')) {
-          setError('This email is already registered. Please sign in instead or use a different email.');
+          setError('user_already_exists');
         } else if (errorMessage.includes('invalid login credentials')) {
           setError('Invalid email or password. Please check your credentials and try again.');
         } else if (errorMessage.includes('email not confirmed')) {
@@ -72,7 +72,22 @@ const Login = () => {
 
         {error && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-red-700 text-sm">{error}</p>
+            {error === 'user_already_exists' ? (
+              <div className="text-red-700 text-sm">
+                <p className="mb-3">This email is already registered.</p>
+                <button
+                  onClick={() => {
+                    setIsLogin(true);
+                    setError('');
+                  }}
+                  className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
+                >
+                  Switch to Sign In
+                </button>
+              </div>
+            ) : (
+              <p className="text-red-700 text-sm">{error}</p>
+            )}
           </div>
         )}
         <form onSubmit={handleSubmit} className="space-y-6">
