@@ -20,7 +20,7 @@ const Navbar = () => {
 
   if (loading) {
     return (
-      <nav className="bg-white shadow-sm border-b border-gray-100">
+      <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="animate-pulse flex items-center space-x-3">
@@ -35,18 +35,21 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-100 relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[64px]">
+    <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3 flex-shrink-0">
             <div className="relative">
-              <Globe className="h-8 w-8 text-teal-600 flex-shrink-0" />
+              <Globe className="h-8 w-8 text-teal-600" />
               <Users className="h-4 w-4 text-gray-600 absolute -top-1 -right-1" />
             </div>
-            <div className="flex flex-col min-w-0">
+            <div className="hidden sm:flex flex-col">
               <span className="text-xl font-bold text-gray-900">Gather Globe</span>
               <span className="text-xs text-teal-600 -mt-1">Plan together. Travel smarter.</span>
+            </div>
+            <div className="sm:hidden">
+              <span className="text-xl font-bold text-gray-900">Gather Globe</span>
             </div>
           </Link>
 
@@ -60,22 +63,22 @@ const Navbar = () => {
                 <div className="relative">
                   <button
                     onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-                    className="flex items-center space-x-3 text-gray-700 hover:text-teal-600 transition-colors bg-gray-50 rounded-lg px-3 py-2 min-w-0"
+                    className="flex items-center space-x-3 text-gray-700 hover:text-teal-600 transition-colors bg-gray-50 rounded-lg px-3 py-2"
                   >
                     {user.avatar ? (
                       <img
                         src={user.avatar}
                         alt={user.name}
-                        className="w-8 h-8 rounded-full object-cover flex-shrink-0"
+                        className="w-8 h-8 rounded-full object-cover"
                       />
                     ) : (
-                      <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center">
                         <span className="text-white text-sm font-medium">
                           {user.name.charAt(0).toUpperCase()}
                         </span>
                       </div>
                     )}
-                    <div className="text-left min-w-0">
+                    <div className="text-left">
                       <p className="text-sm font-medium text-gray-900">{user.name}</p>
                       <p className="text-xs text-gray-500">{user.email}</p>
                     </div>
@@ -117,7 +120,7 @@ const Navbar = () => {
             ) : (
               <Link
                 to="/login"
-                className="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors flex-shrink-0"
+                className="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition-colors"
               >
                 Sign In
               </Link>
@@ -149,7 +152,7 @@ const Navbar = () => {
                         className="w-10 h-10 rounded-full object-cover"
                       />
                     ) : (
-                      <div className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center">
                         <span className="text-white font-medium">
                           {user.name.charAt(0).toUpperCase()}
                         </span>

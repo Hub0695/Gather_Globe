@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -15,7 +15,7 @@ function App() {
       <AuthProvider>
         <div className="min-h-screen bg-gray-50">
           <Navbar />
-          <main>
+          <main className="pt-0">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
